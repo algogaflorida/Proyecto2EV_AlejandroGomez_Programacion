@@ -12,6 +12,18 @@ abstract class EntidadEstelar {
         $this->nivEstabilidad = $niv;
     }
 
+    public function setNombre($nombre){
+        $this->nombre = $nombre;
+    }
+
+    public function setPlanetaOrigen($plan){
+        $this->planetaOrigen = $plan;
+    }
+
+    public function setNivelEstabilidad($niv){
+        $this->nivEstabilidad = $niv;
+    }
+
     public function getId(){
         return $this->id;
     }
