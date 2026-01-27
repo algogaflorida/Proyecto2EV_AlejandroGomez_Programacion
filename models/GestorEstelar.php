@@ -32,12 +32,21 @@ class GestorEstelar implements iGestor {
         }
     }
 
-    public function actualizarEntidad($id, $nom, $planetaO, $nivEst){
+    public function actualizarEntidad($id, $nom, $planetaO, $nivEst, $antig, $dur, $die){
         foreach ($_SESSION['objetosEstelares'] as $i => $obj){
             if ($obj->getId() == $id){
                 $obj->setNombre($nom);
                 $obj->setPlanetaOrigen($planetaO);
                 $obj->setNivelEstabilidad($nivEst);
+                if (!empty($die)){
+                    $obj->setDieta($die);
+                }
+                if (!empty($dur)){
+                    $obj->setDureza($dur);
+                } 
+                if (!empty($antig)) {
+                    $obj->setAntiguedad($antig);
+                }
             }
         }
     }

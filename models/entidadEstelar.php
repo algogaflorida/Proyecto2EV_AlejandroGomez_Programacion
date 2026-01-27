@@ -5,8 +5,8 @@ abstract class EntidadEstelar {
     protected $planetaOrigen;
     protected $nivEstabilidad;
 
-    public function __construct($nom, $planetaO, $niv){
-        $this->id = uniqid();
+    public function __construct($id, $nom, $planetaO, $niv){
+        $this->id = $id;
         $this->nombre = $nom;
         $this->planetaOrigen = $planetaO;
         $this->nivEstabilidad = $niv;

@@ -7,19 +7,16 @@ $controller = new ControladorGalactico($gestor);
 $accion = $_GET['accion'] ?? "index";
 
 switch ($accion) {
-    case "registrar":
+    case "registro":
         $controller->registro();
         break;
-    case "exploracion":
+    case "explorador":
         $controller->explorador();
         break;
-    case "modificar":
+    case "modificacion":
         $controller->modificacion();
         break;
-    case "expulsar":
+    case "expulsion":
         $controller->expulsion();
-        break;
-    case "index":
-        $controller->listar();
         break;
 }
