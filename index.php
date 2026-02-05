@@ -1,14 +1,14 @@
 <?php
-session_start();
 require_once "autoloader.php";
+session_start();
 
-$gestor = new GestorGalactico();
+$gestor = new GestorEstelar();
 $controller = new ControladorGalactico($gestor);
-$accion = $_GET['accion'] ?? "index";
+$accion = $_GET['action'] ?? null;
 
 switch ($accion) {
     case "registro":
-        $controller->registro();
+        $controller->registrar();
         break;
     case "explorador":
         $controller->explorador();
@@ -17,6 +17,8 @@ switch ($accion) {
         $controller->modificacion();
         break;
     case "expulsion":
-        $controller->expulsion();
+        $controller->expulsar();
         break;
+    default:
+        $controller->explorador();
 }

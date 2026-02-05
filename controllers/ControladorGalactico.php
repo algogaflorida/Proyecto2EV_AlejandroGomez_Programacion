@@ -13,22 +13,26 @@ class ControladorGalactico {
             $planO = $_POST['planetaOrigen'];
             $nivEst = $_POST['nivelEstabilidad'];
             if (!empty($_POST['antiguedad'])){
-                $anti = $_POST['antiguedad'];
-                $entidad = new ArtefactoAntiguo($id, $nom, $planO, $nivEst, $anti);
+                $entidad = new ArtefactoAntiguo($id, $nom, $planO, $nivEst, $_POST['antiguedad']);
             } 
             if (!empty($_POST['dieta'])){
-                $die = $_POST['dieta'];
-                $entidad = new FormaDeVida($id, $nom, $planO, $nivEst, $die);
+                $entidad = new FormaDeVida($id, $nom, $planO, $nivEst, $_POST['dieta']);
             } 
             if (!empty($_POST['dureza'])) {
-                $dur = $_POST['dureza'];
-                $entidad = new MineralRaro($id, $nom, $planO, $nivEst, $dur);
+                $entidad = new MineralRaro($id, $nom, $planO, $nivEst, $_POST['dureza']);
             }
             $this->gestor->guardar($entidad);
             header("Location: index.php");
             exit;
         }
-        include "views/registrar.php";
+        $tipo = $_GET['tipo'];
+        if ( $tipo == "artefacto"){
+            include "views/registrarArtefacto.php";
+        } elseif ( $tipo == "mineral") {
+            include "views/registrarMineral.php";    
+        } elseif ($tipo == "fdv") {
+             include "views/registrarForma.php";
+        }
     }
 
     public function explorador(){
@@ -37,7 +41,7 @@ class ControladorGalactico {
     }
 
     public function modificacion(){
-        $id = $_GET['id'] ?? $_POST['id'];
+        $id = $_GET['id'] ?? null;
         
         $entidad = $this->gestor->buscarEntidad($id);
 
@@ -49,19 +53,7 @@ class ControladorGalactico {
             $nom = $_POST['nombre'];
             $planO = $_POST['planetaOrigen'];
             $nivEst = $_POST['nivelEstabilidad'];
-            $antig = $_POST['antiguedad'];
-            $dur = $_POST['dureza'];
-            $die = $_POST['dieta'];
-
-            if (!empty($die)){
-                $this->gestor->actualizarEntidad($nom, $planO, $nivEst, $die);
-            }
-            if (!empty($dur)){
-                $this->gestor->actualizarEntidad($nom, $planO, $nivEst, $dur);
-            } 
-            if (!empty($anti)) {
-                $this->gestor->actualizarEntidad($nom, $planO, $nivEst, $anti);
-            }
+            $this->gestor->actualizarEntidad($id, $nom, $planO, $nivEst, $_POST['antiguedad'], $_POST['dieta'], $_POST['dureza']);
             header('Location: index.php');
             exit;
         }
@@ -69,7 +61,7 @@ class ControladorGalactico {
     }
 
     public function expulsar(){
-        $id = $_GET['id'] ?? $_POST['id'];
+        $id = $_GET['id'] ?? null;
         $this->gestor->eliminar($id);
         header('Location: index.php');
         exit;

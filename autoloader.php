@@ -1,9 +1,13 @@
 <?php
 
 spl_autoload_register(function($clase){
-    $ruta = __DIR__ . "/src/$clase.php";
+    $paths = ['models/', 'controllers/', 'helpers/' ];
 
-    if (file_exists($ruta)){
-        require $ruta;
+    foreach ($paths as $path){
+        $file = __DIR__ . '/' . $path . $clase . '.php';
+        if (file_exists($file)){
+            require_once $file;
+            return;
+        }
     }
 });

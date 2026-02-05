@@ -2,9 +2,9 @@
 class FormaDeVida extends entidadEstelar implements iReaccionEstelar{
     private $dieta;
 
-    public function __construct($dieta, $nom, $planetaO, $niv){
+    public function __construct($id, $nom, $planetaO, $niv, $dieta){
+        parent::__construct($id, $nom, $planetaO, $niv);
         $this->dieta = $dieta;
-        parent::__construct($nom, $planetaO, $niv);
     }
 
     public function setDieta($dieta){

@@ -16,12 +16,14 @@ class GestorEstelar implements iGestor {
     }
 
     public function eliminar($id){
-        foreach ($_SESSION['objetosEstelares'] as $i){
-            if ($i->getId() == $id){
+        foreach ($_SESSION['objetosEstelares'] as $i => $entidad){
+            if ($entidad->getId() == $id){
                 unset($_SESSION['objetosEstelares'][$i]);
                 $_SESSION['objetosEstelares'] = array_values($_SESSION['objetosEstelares']);
+                return true;
             }
         }
+        return false;
     }
 
     public function buscarEntidad($id){
@@ -38,13 +40,13 @@ class GestorEstelar implements iGestor {
                 $obj->setNombre($nom);
                 $obj->setPlanetaOrigen($planetaO);
                 $obj->setNivelEstabilidad($nivEst);
-                if (!empty($die)){
+                if ($obj instanceof FormaDeVida) {
                     $obj->setDieta($die);
                 }
-                if (!empty($dur)){
+                if ($obj instanceof MineralRaro) {
                     $obj->setDureza($dur);
-                } 
-                if (!empty($antig)) {
+                }
+                if ($obj instanceof ArtefactoAntiguo) {
                     $obj->setAntiguedad($antig);
                 }
             }

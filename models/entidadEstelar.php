@@ -33,6 +33,10 @@ abstract class EntidadEstelar {
     }
 
     public function getPlanetaO(){
+        return $this->planetaOrigen;
+    }
+
+    public function getNivelEstabilidad(){
         return $this->nivEstabilidad;
     }
 }

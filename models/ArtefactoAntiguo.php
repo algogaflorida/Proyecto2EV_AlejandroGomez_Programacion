@@ -2,9 +2,9 @@
 class ArtefactoAntiguo extends entidadEstelar implements iReaccionEstelar {
     private $antiguedad;
 
-    public function __construct($antig, $nom, $planetaO, $niv){
+    public function __construct($id, $nom, $planetaO, $niv, $antig){
+        parent::__construct($id, $nom, $planetaO, $niv);
         $this->antiguedad = $antig;
-        parent::__construct($nom, $planetaO, $niv);
     }
 
     public function setAntiguedad($antig){

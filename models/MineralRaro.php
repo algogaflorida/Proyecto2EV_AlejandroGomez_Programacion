@@ -2,9 +2,9 @@
 class MineralRaro extends entidadEstelar implements iReaccionEstelar{
     private $dureza;
 
-    public function __construct($dur, $nom, $planetaO, $niv){
+    public function __construct($id, $nom, $planetaO, $niv, $dur){
+        parent::__construct($id, $nom, $planetaO, $niv);
         $this->dureza = $dur;
-        parent::__construct($nom, $planetaO, $niv);
     }
 
     public function setDureza($dur){
