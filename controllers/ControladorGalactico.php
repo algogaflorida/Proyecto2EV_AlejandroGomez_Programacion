@@ -36,7 +36,7 @@ class ControladorGalactico {
     }
 
     public function explorador(){
-        $elementosPorPagina = 3;
+        $elementosPorPagina = 5;
         $paginaActual=$_GET['np'] ?? 1;
         $entidades = $this->gestor->obtenerTodos();
         $paginasTotales = ceil(count($entidades) / $elementosPorPagina);
