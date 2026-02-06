@@ -8,7 +8,7 @@ class ArtefactoAntiguo extends entidadEstelar implements iReaccionEstelar {
     }
 
     public function setAntiguedad($antig){
-        $this->setAntiguedad = $antig;
+        $this-antiguedad = $antig;
     }
 
     public function getAntiguedad(){

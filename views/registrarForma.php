@@ -1,4 +1,4 @@
-<h2>Registrar Entidad Estelar</h2>
+<h2>Registrar Forma de Vida</h2>
     <form method="POST"> 
         <label>Nombre:</label>
             <input type="text" name="nombre" required></input>
@@ -12,5 +12,5 @@
         <label>Dieta:</label>
             <input type="text" name="dieta"></input>
             <br>
-        <button type="submit">Registrar Entidad</button>
+        <button type="submit">Registrar Forma de Vida</button>
     </form>

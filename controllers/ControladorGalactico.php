@@ -36,7 +36,12 @@ class ControladorGalactico {
     }
 
     public function explorador(){
+        $elementosPorPagina = 3;
+        $paginaActual=$_GET['np'] ?? 1;
         $entidades = $this->gestor->obtenerTodos();
+        $paginasTotales = ceil(count($entidades) / $elementosPorPagina);
+        $primerElemento = ($paginaActual - 1) * $elementosPorPagina;
+        $entidadesCorte = array_slice($entidades, $primerElemento, $elementosPorPagina);
         include "views/explorador.php";
     }
 
@@ -66,4 +71,6 @@ class ControladorGalactico {
         header('Location: index.php');
         exit;
     }
+
+
 }

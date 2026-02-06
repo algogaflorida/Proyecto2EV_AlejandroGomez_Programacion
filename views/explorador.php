@@ -23,7 +23,7 @@
             <th>Botones de edición</th>
         </tr>
 
-        <?php foreach ($entidades as $entidad) : 
+        <?php foreach ($entidadesCorte as $entidad) : 
             $estiloAlerta = ($entidad->getNivelEstabilidad() < 3) ? 'style="background-color: #ffcccc; color: #990000;"' : '';
             ?>
         <tr <?= $estiloAlerta ?> >
@@ -42,6 +42,11 @@
             </td>
         </tr>
         <?php endforeach; ?>
+        <div>
+            <?php 
+                for ($i=1; $i<=$paginasTotales; $i++):?>
+                    <a href="index.php?action=explorador&np=<?= $i ?>"><?= $i ?>
+                <?php endfor; ?>    
 
     </table>
 </body>
